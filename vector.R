@@ -7,6 +7,10 @@ seq(0,10,2)
 sample(1:10,5)#随机抽样
 sample(1:10,11,replace = T)#可重复
 paste0('x_',1:10)
+#factor 重新定义levels 默然按首字母顺序 ordered觉得是否为排序
+b = factor(c("Hi","Med","Hi","Low"), 
+           levels = c("Low","Hi","Med"), ordered = TRUE)
+rep(c("b","a","c"),each=3)
 
 #引用
 x=c(1,2,1,2,1,3)

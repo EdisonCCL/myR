@@ -47,3 +47,44 @@ system.time(svd(T))
 system.time(svds(T,5))
 system.time(eigen(T))
 system.time(eigs(T,5))
+
+#稀疏矩阵
+c=c(1:3,rep(0,5),6:9)
+m1=matrix(c,3)
+library(Matrix)
+m2=Matrix(c,3,4,sparse = TRUE)
+class(m2)
+m2
+m3=Matrix(c,3,4,sparse = FALSE)
+class(m3)
+m3
+m4=spMatrix(10,20,i=c(1,3:8),j=c(2,9,6:10),x=seq(7,49,7)) #或x=7*(1:7)
+m4
+summary(m4)
+summary(m2)
+summary(m3)
+#比较存储大小与生成时间
+n=100
+m1=matrix(0,n,n)
+m2=Matrix(0,n,n) #0超过一半，自动生成稀疏矩阵
+object.size(matrix(0,n,n))
+object.size(Matrix(0,n,n))
+system.time(matrix(0,n,n))
+system.time(Matrix(0,n,n))
+
+n=10000
+m1=matrix(0,n,n)
+m2=Matrix(0,n,n) #0超过一半，自动生成稀疏矩阵
+object.size(matrix(0,n,n))
+object.size(Matrix(0,n,n))
+system.time(matrix(0,n,n))
+system.time(Matrix(0,n,n))
+
+n=1000
+dat=sample(c(0,1),n^2,replace = TRUE,prob=c(0.9,0.1))
+m1=matrix(dat,n,n)
+m2=Matrix(dat,n,n)
+system.time(m1%*%t(m1))
+system.time(m2%*%t(m2))
+system.time(solve(m1))
+system.time(solve(m2))

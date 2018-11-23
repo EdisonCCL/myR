@@ -47,7 +47,7 @@ wday(as.Date('2009-01-02'))
 hour(as.POSIXlt('2018/02/28 22:45:12'))
 minute(as.POSIXlt('2018/02/28 22:45:12'))
 second(as.POSIXct('2018/02/28 22:45:12'))
-
+week(now())
 #算术
 difftime(as.Date('2018/2/2'),as.Date('2018/1/2'),'auto')
 as.Date('2018/2/2')-as.Date('2018/1/2')
